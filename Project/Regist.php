@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'koneksi.php'; // Pastikan file koneksi.php sudah ada di folder yang sama
+require 'koneksi.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $namaDepan = $_POST['namaDepan'];
@@ -11,32 +11,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = $_POST['pass'];
     $pas = $_POST['pas'];
 
-    // 1. Validasi apakah password dan konfirmasi password cocok
+  
     if ($pass === $pas) {
-        
-        // 2. Cek apakah Email sudah pernah didaftarkan sebelumnya
         $cek_email = $conn->prepare("SELECT email FROM users WHERE email = ?");
         $cek_email->bind_param("s", $email);
         $cek_email->execute();
         $cek_email->store_result();
-
-        if ($cek_email->num_rows > 0) {
-            // Jika email sudah ada di database, munculkan error
+        if ($cek_email->num_rows > 0) {    
             echo "<script>alert('Gagal! Email ini sudah terdaftar. Silakan gunakan email lain.');</script>";
         } else {
-            // Jika email belum ada, proses penyimpanan ke database
             $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
-            
             $stmt = $conn->prepare("INSERT INTO users (nama_depan, nama_belakang, email, alamat, no_hp, password) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssss", $namaDepan, $namaBelakang, $email, $alamat, $nohp, $hashed_pass);
-            
             if ($stmt->execute()) {
-                // 3. JIKA SUKSES: Munculkan pesan dan Redirect (Pindah) ke Index.php
+               
                 echo "<script>
                     alert('Registrasi Berhasil! Silakan Login dengan akun baru Anda.'); 
                     window.location.href = 'Index.php';
                 </script>";
-                exit; // Hentikan script di sini agar halaman tidak dilanjutkan loading
+                exit; 
             } else {
                 echo "<script>alert('Terjadi kesalahan sistem: " . $stmt->error . "');</script>";
             }

@@ -2,7 +2,7 @@
 session_start();
 require 'koneksi.php';
 
-// Jika pengguna sudah login, langsung arahkan ke beranda (mainpage)
+
 if (isset($_SESSION['user_id'])) {
     header("Location: mainpage.php");
     exit;
@@ -11,22 +11,22 @@ if (isset($_SESSION['user_id'])) {
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Menangkap data dari form, trim() digunakan untuk menghapus spasi tidak sengaja di awal/akhir ketikan
+  
     $username = trim($_POST['username']); 
     $pass = $_POST['pass'];
 
-    // Cari user berdasarkan GABUNGAN (CONCAT) nama_depan + spasi + nama_belakang
+  
     $stmt = $conn->prepare("SELECT id, nama_depan, nama_belakang, password FROM users WHERE CONCAT(nama_depan, ' ', nama_belakang) = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($row = $result->fetch_assoc()) {
-        // Cek kecocokan password dengan password hash di database
+      
         if (password_verify($pass, $row['password'])) {
-            // SET SESSION
+           
             $_SESSION['user_id'] = $row['id'];
-            // Simpan nama lengkap di session agar di mainpage.php muncul nama lengkapnya
+          
             $_SESSION['nama'] = $row['nama_depan'] . ' ' . $row['nama_belakang'];
             
             header("Location: mainpage.php");
