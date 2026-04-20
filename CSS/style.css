@@ -1,0 +1,76 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #ff4d00 !important;
+}
+
+
+.hero-section {
+    background: linear-gradient(135deg, #fff 50%, #fff5f0 100%);
+    padding: 100px 0;
+}
+
+.btn-primary {
+    background-color: #ff4d00;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #e64500;
+}
+
+.text-orange {
+    color: #ff4d00;
+}
+
+.feature-box {
+    padding: 30px;
+    border-radius: 15px;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+
+.card-pricing {
+    border: 2px solid #f8f9fa;
+    border-radius: 20px;
+}
+
+.card-pricing.popular {
+    border-color: #ff4d00;
+}
+
+.btn-brand {
+    background-color: #ff4d00;
+    border-color: #ff4d00;
+    color: white;
+    transition: all 0.3s ease; 
+}
+
+.btn-brand:hover {
+    background-color: #e64500; 
+    border-color: #e64500;
+    color: white;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 10px rgba(255, 77, 0, 0.3); 
+}
+
+.text-brand {
+    color: #ff4d00 !important;
+    transition: color 0.3s ease;
+}
+
+.text-brand:hover {
+    color: #cc3d00 !important; 
+}
