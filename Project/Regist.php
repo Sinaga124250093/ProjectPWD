@@ -11,31 +11,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = $_POST['pass'];
     $pas = $_POST['pas'];
 
-  
     if ($pass === $pas) {
-        $cek_email = $conn->prepare("SELECT email FROM users WHERE email = ?");
-        $cek_email->bind_param("s", $email);
-        $cek_email->execute();
-        $cek_email->store_result();
-        if ($cek_email->num_rows > 0) {    
+        
+
+        $sql_cek = "SELECT email FROM users WHERE email = '$email'";
+        $result_cek = $conn->query($sql_cek);
+
+        if ($result_cek && $result_cek->num_rows > 0) {    
             echo "<script>alert('Gagal! Email ini sudah terdaftar. Silakan gunakan email lain.');</script>";
         } else {
-            $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("INSERT INTO users (nama_depan, nama_belakang, email, alamat, no_hp, password) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssss", $namaDepan, $namaBelakang, $email, $alamat, $nohp, $hashed_pass);
-            if ($stmt->execute()) {
-               
+            
+            
+            $sql_insert = "INSERT INTO users (nama_depan, nama_belakang, email, alamat, no_hp, password) 
+                           VALUES ('$namaDepan', '$namaBelakang', '$email', '$alamat', '$nohp', '$pass')";
+            
+        
+            if ($conn->query($sql_insert)) {
                 echo "<script>
                     alert('Registrasi Berhasil! Silakan Login dengan akun baru Anda.'); 
                     window.location.href = 'Index.php';
                 </script>";
                 exit; 
             } else {
-                echo "<script>alert('Terjadi kesalahan sistem: " . $stmt->error . "');</script>";
+                echo "<script>alert('Terjadi kesalahan sistem: " . $conn->error . "');</script>";
             }
-            $stmt->close();
         }
-        $cek_email->close();
     } else {
         echo "<script>alert('Password dan Konfirmasi Password tidak cocok!');</script>";
     }
