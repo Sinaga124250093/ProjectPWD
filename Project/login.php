@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -51,8 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
   
-  <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100" 
-       style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../ASSET/logo.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+  <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
     
     <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px; border-radius: 20px; border: none;">
       <div class="card-body">
