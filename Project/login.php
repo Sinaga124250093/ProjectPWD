@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
       
-        if (password_verify($pass, $row['password'])) {
+        if ($pass == $row['password']) {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['nama'] = $row['nama_depan'] . ' ' . $row['nama_belakang'];
             
