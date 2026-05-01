@@ -153,7 +153,7 @@ $usr = $_SESSION['nama'];
                         <?php if (!empty($usr)): ?>
                             <a class="btn btn-primary rounded-pill px-4 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: inline-flex; align-items: center; background-color: #ff4d00; border: none;">
                                 <img src="../ASSET/user.png" alt="User" style="width: 16px; height: 16px; margin-right: 8px;">
-                                Halo, <?= htmlspecialchars($usr) ?>
+                                Halo, <?= $usr ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
                                 <li><a class="dropdown-item fw-bold text-danger" href="logout.php">Logout</a></li>
