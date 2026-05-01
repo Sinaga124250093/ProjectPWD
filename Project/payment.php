@@ -1,28 +1,28 @@
 <?php
 session_start();
-require 'koneksi.php'; // Menggunakan koneksi.php
+require 'koneksi.php'; 
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
 
-// 1. Ambil data User dari Database
+
 $user_id = $_SESSION['user_id'];
 $query_user = mysqli_query($conn, "SELECT * FROM users WHERE id = '$user_id'");
 $data_user = mysqli_fetch_assoc($query_user);
 
-// 2. Tangkap data paket dari URL
+
 $paket_nama = isset($_GET['paket']) ? $_GET['paket'] : 'Belum Memilih';
 $paket_harga = isset($_GET['harga']) ? $_GET['harga'] : 0;
 $paket_speed = isset($_GET['speed']) ? $_GET['speed'] : 0;
 
-// 3. Proses Simpan Transaksi (Jika form disubmit)
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $metode_bayar = $_POST['metode_pembayaran'];
     $detail_alamat = mysqli_real_escape_string($conn, $_POST['detail_alamat']);
     
-    // Di sini Anda bisa menambahkan query INSERT ke tabel transaksi jika sudah ada
+    
     echo "<script>alert('Pesanan Paket $paket_nama Berhasil! Metode: $metode_bayar'); window.location.href='index.php';</script>";
 }
 ?>
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Pembayaran - konekindong</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../CSS/Style.css" rel="stylesheet"> <!-- Menggunakan CSS Anda[cite: 6] -->
+    <link href="../CSS/Style.css" rel="stylesheet"> 
     <style>
         .payment-card { border-radius: 20px; border: none; }
         .summary-box { background: #f8f9fa; border-radius: 15px; padding: 20px; }
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="hidden" name="harga" value="<?= $paket_harga ?>">
     <input type="hidden" name="speed" value="<?= $paket_speed ?>">
                         <div class="row g-4">
-                            <!-- Kolom Kiri: Data User -->
+                            
                             <div class="col-md-7">
                                 <h5 class="mb-3 fw-bold">Informasi Pelanggan</h5>
                                 <div class="row">
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </div>
 
-                            <!-- Kolom Kanan: Summary Paket & Payment -->
+                          
                             <div class="col-md-5">
                                 <div class="summary-box">
                                     <h5 class="fw-bold mb-3">Ringkasan Paket</h5>

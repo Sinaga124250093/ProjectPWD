@@ -7,14 +7,14 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Ambil data dari form payment.php
+
 $nama_paket = $_POST['nama_paket'] ?? 'Tidak Diketahui';
 $harga = $_POST['harga'] ?? 0;
 $speed = $_POST['speed'] ?? 0;
 $metode = $_POST['metode_pembayaran'] ?? 'Tidak Dipilih';
 $detail_alamat = $_POST['detail_alamat'] ?? '-';
 
-// Ambil data user dari session/database
+
 $user_id = $_SESSION['user_id'];
 $query_user = mysqli_query($conn, "SELECT * FROM users WHERE id = '$user_id'");
 $data_user = mysqli_fetch_assoc($query_user);
