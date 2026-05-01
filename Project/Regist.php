@@ -2,7 +2,7 @@
 session_start();
 require 'koneksi.php'; 
 
-// Cek apakah tombol dengan name="btn_register" sudah ditekan
+
 if (isset($_POST['register'])) {
     $namaDepan = $_POST['namaDepan'];
     $namaBelakang = $_POST['namaBelakang'];
