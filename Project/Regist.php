@@ -2,7 +2,8 @@
 session_start();
 require 'koneksi.php'; 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if (isset($_POST['register'])) {
     $namaDepan = $_POST['namaDepan'];
     $namaBelakang = $_POST['namaBelakang'];
     $email = $_POST['email'];
@@ -13,27 +14,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($pass === $pas) {
         
+       
+        $query_cek = mysqli_query($conn, "SELECT email FROM users WHERE email = '$email'");
 
-        $sql_cek = "SELECT email FROM users WHERE email = '$email'";
-        $result_cek = $conn->query($sql_cek);
-
-        if ($result_cek && $result_cek->num_rows > 0) {    
+       
+        if (mysqli_fetch_assoc($query_cek)) {    
             echo "<script>alert('Gagal! Email ini sudah terdaftar. Silakan gunakan email lain.');</script>";
         } else {
-            
             
             $sql_insert = "INSERT INTO users (nama_depan, nama_belakang, email, alamat, no_hp, password) 
                            VALUES ('$namaDepan', '$namaBelakang', '$email', '$alamat', '$nohp', '$pass')";
             
-        
-            if ($conn->query($sql_insert)) {
+           
+            if (mysqli_query($conn, $sql_insert)) {
                 echo "<script>
                     alert('Registrasi Berhasil! Silakan Login dengan akun baru Anda.'); 
                     window.location.href = 'Index.php';
                 </script>";
                 exit; 
             } else {
-                echo "<script>alert('Terjadi kesalahan sistem: " . $conn->error . "');</script>";
+               
+                echo "<script>alert('Terjadi kesalahan sistem: " . mysqli_error($conn) . "');</script>";
             }
         }
     } else {
@@ -97,7 +98,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" class="form-control" id="pas" name="pas" placeholder="Ketik ulang Password" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100 py-2 mt-4 rounded-pill fw-bold" style="background-color: #ff4d00; border: none;">Daftar Sekarang</button>
+                
+                
+                <button type="submit" name="register" class="btn btn-primary w-100 py-2 mt-4 rounded-pill fw-bold" style="background-color: #ff4d00; border: none;">Daftar Sekarang</button>
             </form>
         </div>
     </div>

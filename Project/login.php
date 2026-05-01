@@ -7,20 +7,18 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 
+
 $error = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if (isset($_POST['login'])) {
   
     $username = trim($_POST['username']); 
     $pass = $_POST['pass'];
 
+    $query = mysqli_query($conn, "SELECT id, nama_depan, nama_belakang, password FROM users WHERE CONCAT(nama_depan, ' ', nama_belakang) = '$username'");
 
-    $sql = "SELECT id, nama_depan, nama_belakang, password FROM users WHERE CONCAT(nama_depan, ' ', nama_belakang) = '$username'";
-    
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if ($row = mysqli_fetch_assoc($query)) {
       
         if ($pass == $row['password']) {
             $_SESSION['user_id'] = $row['id'];
@@ -92,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" class="form-control px-3 py-2" placeholder="Masukkan password" id="pass" name="pass" required>
           </div>
 
-          <button type="submit" class="btn btn-brand w-100 py-2 mt-3 rounded-pill fw-bold">
+          <button type="submit" name="login" class="btn btn-brand w-100 py-2 mt-3 rounded-pill fw-bold">
             Login ke Beranda
           </button>
           
