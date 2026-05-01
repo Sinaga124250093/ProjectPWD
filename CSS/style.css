@@ -74,3 +74,73 @@ body {
 .text-brand:hover {
     color: #cc3d00 !important; 
 }
+
+/* yooo */
+/* --- Tambahan Khusus Halaman Pembayaran (Payment) --- */
+
+/* Card utama pembayaran agar terlihat melayang */
+.payment-card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    background: #ffffff;
+}
+
+/* Box ringkasan paket di sebelah kanan */
+.summary-box {
+    background: #fdf2ed; /* Warna latar oranye sangat muda */
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid #ffe0d1;
+}
+
+/* Form control saat di-klik (focus) */
+.form-control:focus {
+    border-color: #ff4d00;
+    box-shadow: 0 0 0 0.25rem rgba(255, 77, 0, 0.25);
+}
+
+/* Utility untuk warna teks brand */
+.text-brand {
+    color: #ff4d00 !important;
+}
+
+/* Tombol Bayar */
+.btn-brand {
+    background-color: #ff4d00;
+    border-color: #ff4d00;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-brand:hover {
+    background-color: #e64500;
+    border-color: #e64500;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 77, 0, 0.3);
+}
+
+/* Label keterangan kecil */
+.small-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+/* Styling input readonly agar tidak terlihat seperti input mati */
+input[readonly], textarea[readonly] {
+    background-color: #f8f9fa !important;
+    border: 1px solid #e9ecef;
+    cursor: not-allowed;
+}
+.btn-outline-orange {
+    border: 2px solid #ff4d00;
+    color: #ff4d00;
+    font-weight: 600;
+}
+
+.btn-outline-orange:hover {
+    background-color: #ff4d00;
+    color: white;
+}

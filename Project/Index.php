@@ -267,7 +267,7 @@ $usr = $_SESSION['nama'];
                             <p class="text-muted">Cocok untuk penggunaan harian dan media sosial.</p>
                             <hr>
                             <p class="fw-bold fs-4 text-orange">Rp 199.000 <small class="text-muted">/bulan</small></p>
-                            <button class="btn btn-outline-primary w-100 mt-3 rounded-pill">Pilih Paket</button>
+                            <button><a href="payment.php?paket=Santai&harga=199000&speed=20" class="btn btn-outline-primary w-100 mt-3 rounded-pill">Pilih Paket</a></button>
                         </div>
                     </div>
                 </div>
