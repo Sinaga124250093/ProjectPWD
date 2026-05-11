@@ -8,11 +8,13 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 
-$nama_paket = $_POST['nama_paket'] ?? 'Tidak Diketahui';
-$harga = $_POST['harga'] ?? 0;
-$speed = $_POST['speed'] ?? 0;
-$metode = $_POST['metode_pembayaran'] ?? 'Tidak Dipilih';
-$detail_alamat = $_POST['detail_alamat'] ?? '-';
+$nama_paket = $_GET['nama_paket'] ?? 'Tidak Diketahui';
+$harga = $_GET['harga'] ?? 0;
+$speed = $_GET['speed'] ?? 0;
+$metode = $_GET['metode'] ?? 'Tidak Dipilih';
+$detail_alamat = $_GET['detail_alamat'] ?? '-';
+
+$no_invoice = $_GET['invoice'] ?? 'INV-UNKNOWN';
 
 
 $user_id = $_SESSION['user_id'];
@@ -52,12 +54,92 @@ $tanggal = date("d F Y");
             font-size: 0.9rem;
             font-weight: 600;
         }
-        @media print {
-            .no-print { display: none; }
-            body { background: white; }
-            .invoice-box { box-shadow: none; margin: 0; width: 100%; }
+    @media print {
+        body {
+            background: white !important;
+            margin: 0;
+            padding: 0;
+            font-size: 12pt;
         }
+
+        .no-print {
+            display: none !important;
+        }
+
+        .invoice-box {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 25px;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+        }
+
+        .payment-card, .table, .table-responsive, .row, .col-6, .col-md-5 {
+            page-break-inside: avoid;
+        }
+
+        .table th, .table td {
+            padding: 10px !important;
+            vertical-align: middle;
+        }
+
+        .payment-method-box {
+            border: 1px solid #ddd;
+            background: white !important;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: black !important;
+        }
+
+        .text-orange {
+            color: #ff4d00 !important;
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+    }
+
+
+    .payment-logo {
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    }
+
+    .payment-method-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 12px;
+        background: white;
+        border: 1px solid #eee;
+    }
+
+    .payment-method-box img {
+        width: 70px;
+        object-fit: contain;
+    }
+
+    .payment-card{
+        padding : 30px;
+        margin-top: 25px;
+    }
+     .qris-img{
+        width: 60%;
+     }
     </style>
+
 </head>
 <body>
 
@@ -128,7 +210,81 @@ $tanggal = date("d F Y");
             </div>
         </div>
 
-        <div class="mt-5 p-3 bg-light rounded border">
+        <!-- Detail Pembayaran -->
+        <div class="payment-card">
+
+            <?php if ($metode == "Transfer Bank") : ?>
+
+                <h5><b>Pembayaran Transfer Bank</b></h5>
+                <p class="mb-3">Silakan transfer ke salah satu rekening berikut:</p>
+
+                <!-- BCA -->
+                <div class="payment-method-box">
+                    <img src="../ASSET/bca.png" alt="BCA">
+                    <div>
+                        <div class="fw-bold">Bank BCA</div>
+                        <div>1234567890</div>
+                        <small>a.n Konekindong Indonesia</small>
+                    </div>
+                </div>
+
+                <!-- Mandiri -->
+                <div class="payment-method-box">
+                    <img src="../ASSET/mandiri.png" alt="Mandiri">
+                    <div>
+                        <div class="fw-bold">Bank Mandiri</div>
+                        <div>9876543210</div>
+                        <small>a.n Konekindong Indonesia</small>
+                    </div>
+                </div>
+
+            <?php elseif ($metode == "QRIS") : ?>
+
+                <h5><b>Pembayaran QRIS</b></h5>
+                <p>Scan QR berikut:</p>
+
+                <div class="text-center">
+                    <img src="../ASSET/qris.png" alt="QRIS" class="img-fluid qris-img">
+                </div>
+
+            <?php elseif ($metode == "E-Wallet") : ?>
+
+                <h5>Pembayaran E-Wallet</h5>
+
+                <!-- GOPAY -->
+                <div class="payment-method-box">
+                    <img src="../ASSET/gopay.png" alt="GoPay">
+                    <div>
+                        <div class="fw-bold">GoPay</div>
+                        <div>081234567890</div>
+                        <small>a.n Konekindong Indonesia</small>
+                    </div>
+                </div>
+
+                <!-- OVO -->
+                <div class="payment-method-box">
+                    <img src="../ASSET/ovo.png" alt="OVO">
+                    <div>
+                        <div class="fw-bold">OVO</div>
+                        <div>081234567890</div>
+                        <small>a.n Konekindong Indonesia</small>
+                    </div>
+                </div>
+
+                <!-- DANA -->
+                <div class="payment-method-box">
+                    <img src="../ASSET/dana.png" alt="DANA">
+                    <div>
+                        <div class="fw-bold">DANA</div>
+                        <div>081234567890</div>
+                        <small>a.n Konekindong Indonesia</small>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+        </div>
+
+        <div class="mt-5 p-3 bg-light rounded border catatan">
             <p class="small text-muted mb-0"><strong>Catatan:</strong> Silakan lakukan pembayaran sesuai metode yang dipilih. Teknisi akan menghubungi Anda dalam 1x24 jam setelah pembayaran dikonfirmasi untuk jadwal instalasi.</p>
         </div>
 
