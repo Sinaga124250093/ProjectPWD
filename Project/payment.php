@@ -19,11 +19,22 @@ $paket_speed = isset($_GET['speed']) ? $_GET['speed'] : 0;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $metode_bayar = $_POST['metode_pembayaran'];
     $detail_alamat = mysqli_real_escape_string($conn, $_POST['detail_alamat']);
+
+    $no_invoice = "INV-" . date("Ymd") . "-" . rand(100,999);
+
+    // Simpan ke history
+    mysqli_query($conn, "INSERT INTO history_pemesanan 
+    (user_id, no_invoice, nama_paket, speed, harga, metode_pembayaran, detail_alamat)
     
+    VALUES
     
-    echo "<script>alert('Pesanan Paket $paket_nama Berhasil! Metode: $metode_bayar'); window.location.href='index.php';</script>";
+    ('$user_id', '$no_invoice', '$paket_nama', '$paket_speed', '$paket_harga', '$metode_bayar', '$detail_alamat')");
+
+    header("Location: invoice.php?invoice=$no_invoice&nama_paket=$paket_nama&harga=$paket_harga&speed=$paket_speed&metode=$metode_bayar&detail_alamat=$detail_alamat");
+    exit;
 }
 ?>
 
@@ -50,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="card-body p-4 p-md-5">
                     <h2 class="fw-bold mb-4">Konfirmasi Pembayaran</h2>
                     
-                    <form action="invoice.php" method="POST">
+                    <form action="" method="POST">
     <input type="hidden" name="nama_paket" value="<?= $paket_nama ?>">
     <input type="hidden" name="harga" value="<?= $paket_harga ?>">
     <input type="hidden" name="speed" value="<?= $paket_speed ?>">
@@ -101,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <option value="">Pilih Metode...</option>
                                             <option value="Transfer Bank">Transfer Bank (BCA/Mandiri)</option>
                                             <option value="E-Wallet">E-Wallet (OVO/Dana/Gopay)</option>
-                                            <option value="Kartu Kredit">Qris</option>
+                                            <option value="QRIS">QRIS</option>
                                         </select>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
