@@ -148,7 +148,9 @@ $usr = $_SESSION['nama'];
                     <li class="nav-item"><a class="nav-link mx-2" href="#">Beranda</a></li>
                     <li class="nav-item"><a class="nav-link mx-2" href="#layanan">Layanan</a></li>
                     <li class="nav-item"><a class="nav-link mx-2" href="#paket">Paket</a></li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="history.php">History</a>
+                    </li>
                     <li class="nav-item ms-2 mt-2 mt-lg-0 dropdown">
                         <?php if (!empty($usr)): ?>
                             <a class="btn btn-primary rounded-pill px-4 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: inline-flex; align-items: center; background-color: #ff4d00; border: none;">
