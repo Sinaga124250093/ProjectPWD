@@ -252,7 +252,7 @@ $usr = $_SESSION['nama'];
         </div>
     </section>
 
-    <section id="paket" class="bg-light py-5">
+   <section id="paket" class="bg-light py-5">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">Pilihan Paket Ngebut</h2>
@@ -267,23 +267,25 @@ $usr = $_SESSION['nama'];
                             <p class="text-muted">Cocok untuk penggunaan harian dan media sosial.</p>
                             <hr>
                             <p class="fw-bold fs-4 text-orange">Rp 199.000 <small class="text-muted">/bulan</small></p>
-                            <button><a href="payment.php?paket=Santai&harga=199000&speed=20" class="btn btn-outline-primary w-100 mt-3 rounded-pill">Pilih Paket</a></button>
+                            <a href="payment.php?paket=Santai&harga=199000&speed=20" class="btn btn-outline-primary w-100 mt-3 rounded-pill" style="color: #000; text-decoration: none;">Pilih Paket</a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
                     <div class="card h-100 card-pricing popular shadow p-4 text-center">
                         <div class="card-body">
                             <span class="badge bg-orange text-white mb-2" style="background-color: #ff4d00;">Paling Populer</span>
                             <h5>Paket Ngebut</h5>
-                            <h2 class="fw-bold py-3 text-orange">50 Mbps</h2>
+                            <h2 class="fw-bold py-3 text-orange" style="color: #ff4d00;">50 Mbps</h2>
                             <p class="text-muted">Streaming 4K dan Work From Home jadi lebih lancar.</p>
                             <hr>
-                            <p class="fw-bold fs-4 text-orange">Rp 349.000 <small class="text-muted">/bulan</small></p>
-                            <button class="btn btn-primary w-100 mt-3 rounded-pill"><a href="payment.php?paket=Santai&harga=199000&speed=20">Pilih Paket</a></button>
+                            <p class="fw-bold fs-4 text-orange" style="color: #ff4d00;">Rp 349.000 <small class="text-muted">/bulan</small></p>
+                            <a href="payment.php?paket=Ngebut&harga=349000&speed=50" class="btn w-100 mt-3 rounded-pill" style="background-color: #ff4d00; color: #fff; text-decoration: none; border: none;">Pilih Paket</a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card h-100 card-pricing p-4 text-center">
                         <div class="card-body">
@@ -292,14 +294,14 @@ $usr = $_SESSION['nama'];
                             <p class="text-muted">Koneksi maksimal untuk gaming dan bisnis tanpa hambatan.</p>
                             <hr>
                             <p class="fw-bold fs-4 text-orange">Rp 599.000 <small class="text-muted">/bulan</small></p>
-                            <button class="btn btn-outline-primary w-100 mt-3 rounded-pill"><a href="payment.php?paket=Santai&harga=199000&speed=20">Pilih Paket</a></button>
+                            <a href="payment.php?paket=Dewa&harga=599000&speed=100" class="btn btn-outline-primary w-100 mt-3 rounded-pill" style="color: #000; text-decoration: none;">Pilih Paket</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <footer class="py-5 bg-dark text-white">
         <div class="container text-center">
             <h3 class="fw-bold mb-3">konekindong</h3>
