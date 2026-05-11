@@ -124,7 +124,7 @@ $usr = $_SESSION['nama'];
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#">konekindong   
+            <a class="navbar-brand" href="">konekindong   
             <?php
             $hari = date('l');
             $daftar_hari = array(
