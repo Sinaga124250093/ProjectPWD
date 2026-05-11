@@ -280,7 +280,7 @@ $usr = $_SESSION['nama'];
                             <p class="text-muted">Streaming 4K dan Work From Home jadi lebih lancar.</p>
                             <hr>
                             <p class="fw-bold fs-4 text-orange">Rp 349.000 <small class="text-muted">/bulan</small></p>
-                            <button class="btn btn-primary w-100 mt-3 rounded-pill">Pilih Paket</button>
+                            <button class="btn btn-primary w-100 mt-3 rounded-pill"><a href="payment.php?paket=Santai&harga=199000&speed=20">Pilih Paket</a></button>
                         </div>
                     </div>
                 </div>
@@ -292,7 +292,7 @@ $usr = $_SESSION['nama'];
                             <p class="text-muted">Koneksi maksimal untuk gaming dan bisnis tanpa hambatan.</p>
                             <hr>
                             <p class="fw-bold fs-4 text-orange">Rp 599.000 <small class="text-muted">/bulan</small></p>
-                            <button class="btn btn-outline-primary w-100 mt-3 rounded-pill">Pilih Paket</button>
+                            <button class="btn btn-outline-primary w-100 mt-3 rounded-pill"><a href="payment.php?paket=Santai&harga=199000&speed=20">Pilih Paket</a></button>
                         </div>
                     </div>
                 </div>
@@ -307,7 +307,7 @@ $usr = $_SESSION['nama'];
             <div class="d-flex justify-content-center gap-3">
                 <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
                 <a href="#" class="text-white text-decoration-none">Terms of Service</a>
-                <a href="Registrasi.html" class="text-white text-decoration-none">Daftar Sekarang</a>
+                <a href="Regist.php" class="text-white text-decoration-none">Daftar Sekarang</a>
             </div>
         </div>
     </footer>
