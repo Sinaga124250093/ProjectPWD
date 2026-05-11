@@ -301,7 +301,7 @@ $usr = $_SESSION['nama'];
             </div>
         </div>
     </section>
-    
+
     <footer class="py-5 bg-dark text-white">
         <div class="container text-center">
             <h3 class="fw-bold mb-3">konekindong</h3>
@@ -309,7 +309,6 @@ $usr = $_SESSION['nama'];
             <div class="d-flex justify-content-center gap-3">
                 <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
                 <a href="#" class="text-white text-decoration-none">Terms of Service</a>
-                <a href="Regist.php" class="text-white text-decoration-none">Daftar Sekarang</a>
             </div>
         </div>
     </footer>
