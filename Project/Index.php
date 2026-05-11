@@ -307,8 +307,8 @@ $usr = $_SESSION['nama'];
             <h3 class="fw-bold mb-3">konekindong</h3>
             <p class="mb-4">Koneksi Indonesia Ngebut © 2024. All Rights Reserved.</p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
-                <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+                <a href="privacy.php" class="text-white text-decoration-none">Privacy Policy</a>
+                <a href="service.php" class="text-white text-decoration-none">Terms of Service</a>
             </div>
         </div>
     </footer>
