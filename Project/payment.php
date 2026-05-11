@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <option value="">Pilih Metode...</option>
                                             <option value="Transfer Bank">Transfer Bank (BCA/Mandiri)</option>
                                             <option value="E-Wallet">E-Wallet (OVO/Dana/Gopay)</option>
-                                            <option value="Kartu Kredit">Kartu Kredit</option>
+                                            <option value="Kartu Kredit">Qris</option>
                                         </select>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
